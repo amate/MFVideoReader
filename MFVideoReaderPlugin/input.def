@@ -1,0 +1,5 @@
+LIBRARY MFVideoReaderPlugin
+
+EXPORTS
+	GetInputPluginTable @1
+

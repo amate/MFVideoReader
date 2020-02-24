@@ -33,7 +33,7 @@ bool BindProcess::StartProcess(const std::wstring& exePath, const std::wstring& 
 	m_hEventKillSwitch = ::CreateEvent(&securityAttributes, TRUE, FALSE, NULL);
 	ATLASSERT(m_hEventKillSwitch);
 
-	std::wstring kJobName = L"InputPipePlugin_Job" + std::to_wstring((uint64_t)m_hEventKillSwitch);
+	std::wstring kJobName = L"MFVideoReaderPlugin_Job" + std::to_wstring((uint64_t)m_hEventKillSwitch);
 	m_hJob = ::CreateJobObject(nullptr, kJobName.c_str());
 	ATLASSERT(m_hJob);
 	JOBOBJECT_EXTENDED_LIMIT_INFORMATION extendedLimit = {};

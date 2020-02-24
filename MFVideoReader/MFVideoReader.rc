@@ -13,11 +13,144 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
+// 日本語 (日本) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAINDLG DIALOGEX 0, 0, 382, 276
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "MFVideoReader"
+FONT 9, "Segoe UI", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "保存",IDOK,239,37,50,14
+    PUSHBUTTON      "終了",IDCANCEL,306,37,50,14
+    GROUPBOX        "設定",IDC_STATIC,7,4,359,54
+    CONTROL         "DXVA2(GPU利用) を有効にする",IDC_CHECK_USE_DXVA2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,16,110,14
+    CONTROL         "ハンドルキャッシュを有効にする",IDC_CHECK_USE_HANDLECACHE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,131,16,110,14
+    CONTROL         "プロセス間通信を有効にする",IDC_CHECK_USE_IPC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,245,16,110,14
+    GROUPBOX        "再生テスト",IDC_STATIC,7,64,358,205
+    EDITTEXT        IDC_EDIT_VIDEOPATH,17,78,308,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_FILESELECT,333,75,25,17
+    EDITTEXT        IDC_EDIT_VIDEOINFO,17,109,128,100,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "動画情報取得",IDC_BUTTON_CHECKMEDIAINFO,17,237,129,18
+    PUSHBUTTON      "デコードテスト",IDC_BUTTON_DECODETEST,286,236,73,25
+    LTEXT           "動画情報",IDC_STATIC,17,97,125,11
+    LTEXT           "動作ログ",IDC_STATIC,159,97,89,10
+    CONTROL         "",IDC_PROGRESS_TEST,"msctls_progress32",WS_BORDER,17,218,343,11
+    LTEXT           "※設定はAviUtl再起動後に有効になります。",IDC_STATIC,17,38,135,11
+    EDITTEXT        IDC_EDIT_AVARAGEFPS,229,235,34,11,ES_AUTOHSCROLL | ES_READONLY,WS_EX_STATICEDGE
+    LTEXT           "平均fps:",IDC_STATIC,199,236,29,11
+    CONTROL         "",IDC_RICHEDIT2_LOG,"RICHEDIT50W",WS_BORDER | WS_VSCROLL | WS_TABSTOP | 0x884,158,108,201,101
+    GROUPBOX        "Log level",IDC_STATIC,175,29,54,27
+    COMBOBOX        IDC_COMBO_LOGLEVEL,180,39,43,50,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_MAINDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 375
+        VERTGUIDE, 17
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 269
+        HORZGUIDE, 16
+        HORZGUIDE, 37
+        HORZGUIDE, 97
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_MAINDLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MAINDLG DLGINIT
+BEGIN
+    IDC_COMBO_LOGLEVEL, 0x403, 5, 0
+0x6f6e, 0x656e, "\000" 
+    IDC_COMBO_LOGLEVEL, 0x403, 5, 0
+0x6e69, 0x6f66, "\000" 
+    IDC_COMBO_LOGLEVEL, 0x403, 7, 0
+0x6177, 0x6972, 0x676e, "\000" 
+    IDC_COMBO_LOGLEVEL, 0x403, 6, 0
+0x7265, 0x6f72, 0x0072, 
+    0
+END
+
+#endif    // 日本語 (日本) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
 // 英語 (米国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG 0, 0, 187, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 9, "Segoe UI"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,130,81,50,14
+    CTEXT           "MFVideoReader Application v1.0\n\n(c) Copyright 2020",IDC_STATIC,25,57,78,32
+    ICON            IDR_MAINFRAME,IDC_STATIC,55,26,18,20
+    GROUPBOX        "",IDC_STATIC,7,7,115,88
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -52,60 +185,6 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\MFVideoReader.ico"
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog
-//
-
-IDD_ABOUTBOX DIALOG 0, 0, 187, 102
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About"
-FONT 9, "Segoe UI"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,130,81,50,14
-    CTEXT           "MFVideoReader Application v1.0\n\n(c) Copyright 2020",IDC_STATIC,25,57,78,32
-    ICON            IDR_MAINFRAME,IDC_STATIC,55,26,18,20
-    GROUPBOX        "",IDC_STATIC,7,7,115,88
-END
-
-IDD_MAINDLG DIALOG 0, 0, 187, 98
-STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
-CAPTION "MFVideoReader"
-FONT 9, "Segoe UI"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,130,7,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,130,24,50,14
-    PUSHBUTTON      "&About",ID_APP_ABOUT,130,77,50,14
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// DESIGNINFO
-//
-
-#ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
-BEGIN
-    IDD_ABOUTBOX, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 180
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 95
-    END
-
-    IDD_MAINDLG, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 180
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 91
-    END
-END
-#endif    // APSTUDIO_INVOKED
 
 
 /////////////////////////////////////////////////////////////////////////////

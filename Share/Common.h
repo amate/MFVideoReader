@@ -7,7 +7,8 @@
 #include <boost\filesystem.hpp>
 
 #include <windows.h>
-//#include "..\InputPipePlugin\input.h"
+
+#include "..\MFVideoReaderPlugin\input.h"
 
 #if 0
 
@@ -27,11 +28,8 @@ BOOL func_config(HWND hwnd, HINSTANCE dll_hinst);
 
 #define		PLUGIN_VERSION	"1.0"
 
-
-constexpr	int kVideoBufferSurplusBytes = 0x3FF;
-
-constexpr LPCWSTR kVideoSharedMemoryPrefix = L"InputPipePluginVideo_";
-constexpr LPCWSTR kAudioSharedMemoryPrefix = L"InputPipePluginAudio_";
+constexpr LPCWSTR kVideoSharedMemoryPrefix = L"MFVideoReaderPluginVideo_";
+constexpr LPCWSTR kAudioSharedMemoryPrefix = L"MFVideoReaderPluginAudio_";
 
 ////////////////////////////////////////////////////////////////
 
@@ -43,21 +41,22 @@ fs::path GetExeDirectory();
 
 ////////////////////////////////////////////////////////////////
 
-constexpr LPCSTR	kConfigFileName = "InputPipePluginConfig.ini";
+constexpr LPCSTR	kConfigFileName = "MFVideoReaderConfig.ini";
 
 struct Config
 {
+	bool	bUseDXVA2;
 	bool	bEnableHandleCache;
 	bool	bEnableIPC;
-	bool	bUseSharedMemory;
+	int		logLevel;
+
+	int		get_severity_level();
 
 	bool	LoadConfig();
 	bool	SaveConfig();
 };
 
 ////////////////////////////////////////////////////////////////
-
-#if 0
 
 enum class CallFunc : std::int32_t
 {
@@ -160,5 +159,3 @@ std::pair<RetT, BYTE*> ParseFromInputData(std::vector<BYTE>& readBody)
 {
 	return { *(RetT*)readBody.data(), readBody.data() + sizeof(RetT) };
 }
-
-#endif

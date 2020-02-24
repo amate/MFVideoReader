@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFVideoReader", "MFVideoReader\MFVideoReader.vcxproj", "{756426B5-A1DF-4BAD-83EF-6D8B740F9182}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFVideoReaderPlugin", "MFVideoReaderPlugin\MFVideoReaderPlugin.vcxproj", "{35DF5F97-970E-4125-A271-F424CDBA7739}"
+	ProjectSection(ProjectDependencies) = postProject
+		{756426B5-A1DF-4BAD-83EF-6D8B740F9182} = {756426B5-A1DF-4BAD-83EF-6D8B740F9182}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

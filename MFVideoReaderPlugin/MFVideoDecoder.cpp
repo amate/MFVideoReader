@@ -539,31 +539,33 @@ void	MFFinalize()
 std::wstring MediaInfo::GetMediaInfoText() const
 {
 	std::wstring mediaInfoText;
+
+	double decimal, y;
+	decimal = std::modf(ConvertSecFrom100ns(nsDuration), &y);
+	int secDuration = static_cast<int>(y);
+	int hour = secDuration / 3600;
+	int min = (secDuration % 3600) / 60;
+	double sec = ((secDuration % 3600) % 60) + decimal;
+	mediaInfoText += (boost::wformat(L"play time: %1$02d:%2$02d:%3$02.3f\n") % hour % min % sec).str();
+
 	if (videoStreamIndex != -1) {
 		double fps = static_cast<double>(nume) / denom;
-
-		int secDuration = static_cast<int>(ConvertSecFrom100ns(nsDuration));
-		int hour = secDuration / 3600;
-		int min = (secDuration % 3600) / 60;
-		int sec = (secDuration % 3600) % 60;
 		mediaInfoText += (boost::wformat(
 			L"videoStreamIndex: %1%\n"
-			L"fps: %2$.3f\n"
-			L"Duration: %3$02d:%4$02d:%5$02d\n" // %3$02d%:%4$02d%:%5$02d%
-		L"totalFrameCount: %6%\n"
-		L"FrameSize: %7%x%8%\n"
-		L"\n") 
-			% videoStreamIndex % fps % hour % min % sec % totalFrameCount % imageFormat.biWidth % imageFormat.biHeight).str();
+			L"  fps: %2$.3f\n"
+			L"  totalFrameCount: %3%\n"
+			L"  FrameSize: %4%x%5%\n") 
+			% videoStreamIndex % fps % totalFrameCount % imageFormat.biWidth % imageFormat.biHeight).str();
 	}
 	if (audioStreamIndex != -1) {
 		mediaInfoText += (boost::wformat(
 			L"audioStreamIndex: %1%\n"
-		L"nChannels: %2%\n"
-		L"nSamplesPerSec: %3%\n"
-		L"nAvgBytesPerSec: %4%\n"
-		L"nBlockAlign: %5%\n"
-		L"wBitsPerSample: %6%\n"
-		L"totalAudioSampleCount: %7%\n") 
+			L"  nChannels: %2%\n"
+			L"  nSamplesPerSec: %3%\n"
+			L"  nAvgBytesPerSec: %4%\n"
+			L"  nBlockAlign: %5%\n"
+			L"  wBitsPerSample: %6%\n"
+			L"  totalAudioSampleCount: %7%\n") 
 			% audioStreamIndex % audioFormat.nChannels % audioFormat.nSamplesPerSec % audioFormat.nAvgBytesPerSec % audioFormat.nBlockAlign % audioFormat.wBitsPerSample % totalAudioSampleCount).str();
 	}
 	return mediaInfoText;
@@ -763,28 +765,26 @@ void MFVideoDecoder::Finalize()
 {
 	INFO_LOG << L"MFVideoDecoder::Finalize";
 
-	MFFinalize();
-
-	HRESULT hr = S_OK;
-
 	m_sampleCache.ResetVideo();
 	m_sampleCache.ResetAudio(0);
 
 	if (m_bUseDXVA2) {
 		if (m_spMFOutBufferSample) {
-			hr = m_spVPMFTransform->ProcessMessage(MFT_MESSAGE_NOTIFY_END_OF_STREAM, 0);
+			HRESULT hr = m_spVPMFTransform->ProcessMessage(MFT_MESSAGE_NOTIFY_END_OF_STREAM, 0);
 			IF_FAILED_ERRORLOG(hr);
 			m_spMFOutBufferSample.Release();
 		}
-		m_spVPMFTransform.Release();
-
-		m_spDevice.Release();
-		m_spDevManager.Release();
 	}
+	m_spVPMFTransform.Release();
+
+	m_spDevice.Release();
+	m_spDevManager.Release();
 
 	//m_spSourceReader.Release();
 	m_spVideoSourceReader.Release();
 	m_spAudioSourceReader.Release();
+
+	MFFinalize();
 }
 
 bool MFVideoDecoder::OpenMediaFile(const std::wstring& filePath)

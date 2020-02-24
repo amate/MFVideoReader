@@ -18,6 +18,13 @@ namespace logging = boost::log;
 #define USE_CONSOLE
 #endif
 
+
+#ifdef _DEBUG
+int	g_logLevel = logging::trivial::info;
+#else
+int	g_logLevel = logging::trivial::warning;
+#endif
+
 //std::string	LogFileName()
 //{
 //	return "info.log";
@@ -107,10 +114,13 @@ BOOST_LOG_GLOBAL_LOGGER_INIT(my_logger, logger_t)
 
 	logging::core::get()->set_filter
 		(
+			logging::trivial::severity >= g_logLevel
+#if 0
 #ifdef _DEBUG
 		logging::trivial::severity >= logging::trivial::info
 #else
 		logging::trivial::severity >= logging::trivial::warning
+#endif
 #endif
 		);
 

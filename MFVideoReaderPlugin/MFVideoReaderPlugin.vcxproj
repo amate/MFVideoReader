@@ -158,8 +158,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\MFMediaPropDump\Helper.h" />
+    <ClInclude Include="..\MFMediaPropDump\MFFriendlyErrors.h" />
     <ClInclude Include="..\Share\CodeConvert.h" />
     <ClInclude Include="..\Share\Common.h" />
+    <ClInclude Include="..\Share\DecoderPluginWrapper.h" />
     <ClInclude Include="..\Share\IPC.h" />
     <ClInclude Include="..\Share\Logger.h" />
     <ClInclude Include="..\Share\ptreeWrapper.h" />
@@ -178,6 +180,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Share\DecoderPluginWrapper.cpp" />
     <ClCompile Include="..\Share\IPC.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>

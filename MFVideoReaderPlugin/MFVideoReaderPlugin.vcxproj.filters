@@ -51,6 +51,12 @@
     <ClInclude Include="..\MFMediaPropDump\Helper.h">
       <Filter>ソース ファイル\MFMediaPropDump</Filter>
     </ClInclude>
+    <ClInclude Include="..\MFMediaPropDump\MFFriendlyErrors.h">
+      <Filter>ソース ファイル\MFMediaPropDump</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\DecoderPluginWrapper.h">
+      <Filter>ソース ファイル\Share</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -79,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="..\MFMediaPropDump\Helper.cpp">
       <Filter>ソース ファイル\MFMediaPropDump</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\DecoderPluginWrapper.cpp">
+      <Filter>ソース ファイル\Share</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

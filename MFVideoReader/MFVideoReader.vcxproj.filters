@@ -13,22 +13,49 @@
       <UniqueIdentifier>{ba7194ce-dbe5-46d3-bf87-e22f42124c77}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;manifest</Extensions>
     </Filter>
+    <Filter Include="Source Files\Share">
+      <UniqueIdentifier>{0d13f59e-df5a-44f7-b7cc-a3fc15434e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MFVideoReaderPlugin">
+      <UniqueIdentifier>{49bc2d57-b359-4bb4-a364-e0d0502858f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MFMediaPropDump">
+      <UniqueIdentifier>{75976892-24ac-4d34-b1f5-8e306462067d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MFVideoReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MainDlg.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Share\CodeConvert.cpp">
+      <Filter>Source Files\Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Common.cpp">
+      <Filter>Source Files\Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\IPC.cpp">
+      <Filter>Source Files\Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\Logger.cpp">
+      <Filter>Source Files\Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MFVideoReaderPlugin\MFVideoDecoder.cpp">
+      <Filter>Source Files\MFVideoReaderPlugin</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MFMediaPropDump\Helper.cpp">
+      <Filter>Source Files\MFMediaPropDump</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Share\DecoderPluginWrapper.cpp">
+      <Filter>Source Files\Share</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MainDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -41,6 +68,39 @@
     <ClInclude Include="timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Share\ptreeWrapper.h">
+      <Filter>Source Files\Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\CodeConvert.h">
+      <Filter>Source Files\Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Common.h">
+      <Filter>Source Files\Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\IPC.h">
+      <Filter>Source Files\Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\Logger.h">
+      <Filter>Source Files\Share</Filter>
+    </ClInclude>
+    <ClInclude Include="DropHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MFVideoReaderPlugin\MFVideoDecoder.h">
+      <Filter>Source Files\MFVideoReaderPlugin</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MFMediaPropDump\Helper.h">
+      <Filter>Source Files\MFMediaPropDump</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MFMediaPropDump\MFFriendlyErrors.h">
+      <Filter>Source Files\MFMediaPropDump</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Share\DecoderPluginWrapper.h">
+      <Filter>Source Files\Share</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MFVideoReader.rc">
@@ -51,5 +111,10 @@
     <Image Include="res\MFVideoReader.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
